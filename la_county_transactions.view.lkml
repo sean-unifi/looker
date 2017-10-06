@@ -11,7 +11,7 @@ view: la_county_transactions {
   measure: la_county_home_price_per_square_feet {
     label: "Home Price per Square Foot"
     type: average
-    value_format_name: decimal_2
+    value_format_name: usd
     sql: ${TABLE}.`la county home price per square feet` ;;
   }
 
@@ -76,5 +76,9 @@ view: la_county_transactions {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  set: drill_fields {
+    fields: [parcel_sequence_number, percel_id, la_county_home_sales_date_date, category, county_code, la_county_home_primary_category_code  ]
   }
 }
