@@ -10,7 +10,7 @@ view: la_county_transactions {
 
   measure: la_county_home_price_per_square_feet {
     label: "Home Price per Square Foot"
-    type: sum
+    type: average
     sql: ${TABLE}.`la county home price per square feet` ;;
   }
 
@@ -23,12 +23,12 @@ view: la_county_transactions {
   dimension: la_county_home_sales_date {
     label: "Home Sales Date"
     type: date
-    sql: ${TABLE}.`la county home sales date` ;;
+    sql: from_unixtime(unix_timestamp(${TABLE}.`la county home sales date`, "yyyyMMdd"), "yyyy-MM-dd")  ;;
   }
 
   measure: la_county_home_sales_price {
     label: "Home Sales Price"
-    type: sum
+    type: average
     sql: ${TABLE}.`la county home sales price` ;;
   }
 
