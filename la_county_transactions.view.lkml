@@ -22,8 +22,8 @@ view: la_county_transactions {
 
   dimension: la_county_home_sales_date {
     label: "Home Sales Date"
-    type: string
-    sql: ${TABLE}.`la county home sales date` ;;
+    type: date
+    sql: concat(substring(${TABLE}.`la county home sales date`, 1, 4), '-', substring(${TABLE}.`la county home sales date`, 5, 2), '-', substring(${TABLE}.`la county home sales date`, 7, 2)) ;;
   }
 
   measure: la_county_home_sales_price {
