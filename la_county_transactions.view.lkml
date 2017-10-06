@@ -23,7 +23,7 @@ view: la_county_transactions {
   dimension: la_county_home_sales_date {
     label: "Home Sales Date"
     type: string
-    sql: from_unixtime(unix_timestamp(${TABLE}.`la county home sales date`, "yyyyMMdd"), "yyyy-MM-dd")  ;;
+    sql: ${TABLE}.`la county home sales date` ;;
   }
 
   measure: la_county_home_sales_price {
