@@ -208,9 +208,16 @@ view: la_county_property {
     sql: ${TABLE}.situssdslongdegr ;;
   }
 
+  dimension: location {
+    type: location
+    sql_latitude: ${situssdslatdegr} ;;
+    sql_longitude: ${situssdslongdegr} ;;
+  }
+
   dimension: situsstdaddr {
     label: "Address"
     type: string
+    drill_fields: [location]
     sql: ${TABLE}.situsstdaddr ;;
   }
 
@@ -218,7 +225,7 @@ view: la_county_property {
     label: "City"
     type: string
     sql: ${TABLE}.situsstdcityname ;;
-    drill_fields: [situsstdzipcd]
+    drill_fields: [situsstdzipcd, location]
   }
 
   dimension: situsstdhse1nbr {
@@ -236,7 +243,7 @@ view: la_county_property {
     type: string
     map_layer_name: us_states
     sql: ${TABLE}.situsstdstcd ;;
-    drill_fields: [situsstdcityname]
+    drill_fields: [situsstdcityname, situsstdzipcd, location]
   }
 
   dimension: situsstdzipcd {
@@ -244,7 +251,7 @@ view: la_county_property {
     type: string
     map_layer_name: us_zipcode_tabulation_areas
     sql: ${TABLE}.situsstdzipcd ;;
-    drill_fields: [situsstdaddr]
+    drill_fields: [situsstdaddr, location]
   }
 
   dimension: situsstreetnamepfx {
@@ -254,6 +261,6 @@ view: la_county_property {
 
   measure: count {
     type: count
-    drill_fields: [situsaddrstreetname, situsorigcityname, situsstdcityname]
+    drill_fields: [situsaddrstreetname, situsorigcityname, situsstdcityname, situsstdzipcd, situsstdaddr, pclid, pclseqnbr  ]
   }
 }
