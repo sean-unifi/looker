@@ -9,7 +9,7 @@ view: la_trans {
 
   dimension: saledt {
     type: date
-    sql: to_date(${TABLE}.saledt,'YYYYMMDD') ;;
+    sql: concat(substring(${TABLE}.saledt, 1, 4), '-', substring(${TABLE}.saledt, 5, 2), '-', substring(${TABLE}.saledt, 7, 2)) ;;
   }
 
   measure: salepriceamt {
