@@ -5,7 +5,7 @@ persist_for: "168 hours"
 include: "*.view"
 
 # include all the dashboards
-include: "*.dashboard"
+#include: "*.dashboard"
 
 explore: la_county_buildings {}
 
